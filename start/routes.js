@@ -23,3 +23,8 @@ Route.group(()=>{
   Route.get('register', 'RegisterController.showRegistrationForm').as('register');
   Route.post('register', 'RegisterController.register')
 }).namespace('Auth')
+
+//User resource
+
+Route.resource('users','UserController').middleware('auth')
+Route.post('/users/:id','UserController.update')

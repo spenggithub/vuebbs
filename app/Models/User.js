@@ -4,6 +4,12 @@ const Hash = use('Hash')
 const Model = use('Model')
 
 class User extends Model {
+  static formatDates (field, value) {
+    if (field === 'dob') {
+      return value.format('YYYY-MM-DD')
+    }
+    return super.formatDates(field, value)
+  }
   static boot () {
     super.boot()
 

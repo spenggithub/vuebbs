@@ -3,13 +3,13 @@ const { validate } = use('Validator')
 const User = use('App/Models/User')
 const Hash = use('Hash')
 class LoginController {
-  showLoginForm({view,auth,response}){
-    if(!auth.check()){
+  async showLoginForm({view,auth,response}){
+    try{
+      await auth.check()
       return response.redirect('/')
     }
-    else {
+    catch (error){
       return view.render('auth/login')
-
     }
   }
   async login({request,session,response,auth,view}){

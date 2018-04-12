@@ -2,11 +2,14 @@
 const { validate } = use('Validator')
 const User = use('App/Models/User')
 class RegisterController {
-  showRegistrationForm({view,auth,response}) {
-    if(auth.check()){
+  async showRegistrationForm({view,auth,response}) {
+    try{
+      await auth.check()
       return response.redirect('/')
     }
-    return view.render('auth.register')
+    catch (error){
+      return view.render('auth.register')
+    }
   }
 
   async register({request, response, session,auth}) {
