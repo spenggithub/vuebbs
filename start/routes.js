@@ -16,3 +16,10 @@
 const Route = use('Route')
 
 Route.get('/','PagesController.root')
+Route.group(()=>{
+  Route.get('login', 'LoginController.showLoginForm').as('login')
+  Route.post('login', 'LoginController.login')
+  Route.post('logout', 'LoginController.logout').as('logout')
+  Route.get('register', 'RegisterController.showRegistrationForm').as('register');
+  Route.post('register', 'RegisterController.register')
+}).namespace('Auth')

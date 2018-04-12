@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Laravel 进阶教程</title>
-    {{ css('https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css') }}
-    {{ css('app') }}
-    <!-- Styles -->
+{{ css('https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css') }}
+{{ css('app') }}
+<!-- Styles -->
 </head>
 
 <body>
@@ -16,6 +16,7 @@
     @include('layouts._header')
 
     <div class="container">
+        @include('layouts._message')
         @section('content')
         @endsection
     </div>

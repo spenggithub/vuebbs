@@ -1,0 +1,73 @@
+@layout('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">用户注册</div>
+
+                    <div class="panel-body">
+                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                            {{ csrfField() }}
+
+                            <div class="form-group {{ elIf('has-error', getErrorFor('name'),hasErrorFor('name')) }}}">
+                                <label for="name" class="col-md-4 control-label">用户名</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name','') }}"  autofocus>
+                                    @if(getErrorFor('name'))
+                                        <span class="help-block">
+                                        <strong>{{ getErrorFor('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group {{ elIf('has-error', getErrorFor('email'),hasErrorFor('email')) }}}">
+                                <label for="email" class="col-md-4 control-label">E-Mail 地址</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email','') }}" required>
+                                    @if(getErrorFor('email'))
+                                        <span class="help-block">
+                                        <strong>{{ getErrorFor('email') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group {{ elIf('has-error', getErrorFor('password'),hasErrorFor('password')) }}}">
+                                <label for="password" class="col-md-4 control-label">密 码</label>
+
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    @if(getErrorFor('password'))
+                                        <span class="help-block">
+                                        <strong>{{ getErrorFor('password') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password-confirm" class="col-md-4 control-label">重复密码</label>
+
+                                <div class="col-md-6">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        注册 <i class="glyphicon glyphicon-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

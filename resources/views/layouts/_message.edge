@@ -1,0 +1,19 @@
+@if(hasErrorFor('message'))
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        {{ getErrorFor('message') }}
+    </div>
+@endif
+@if(hasErrorFor('success'))
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        {{ getErrorFor('success') }}
+    </div>
+@endif
+
+@if(hasErrorFor('danger'))
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        {{ getErrorFor('danger') }}
+    </div>
+@endif
